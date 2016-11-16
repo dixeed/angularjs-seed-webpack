@@ -1,0 +1,24 @@
+{
+  "name": "angularjs-seed-webpack",
+  "version": "1.0.0",
+  "description": "This is a blank startup project for AngularJS using the components approach and webpack for the build chain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dixeed/angularjs-seed-webpack.git"
+  },
+  "keywords": [
+    "angularjs",
+    "components",
+    "webpack"
+  ],
+  "author": "Nargonath",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dixeed/angularjs-seed-webpack/issues"
+  },
+  "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme"
+}

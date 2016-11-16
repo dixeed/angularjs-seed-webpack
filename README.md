@@ -18,4 +18,4 @@ Here the list of functionalities that are currently available in this project se
 
 ## License
 
-This code is available under [MIT licence](LICENCE)
+This code is available under [MIT licence](LICENSE)

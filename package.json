@@ -4,6 +4,7 @@
   "description": "This is a blank startup project for AngularJS using the components approach and webpack for the build chain.",
   "main": "index.js",
   "scripts": {
+    "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/dixeed/angularjs-seed-webpack/issues"
   },
-  "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme"
+  "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme",
+  "devDependencies": {
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
 }

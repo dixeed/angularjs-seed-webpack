@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -16,6 +17,13 @@ module.exports = {
     ]
   },
   plugins: [
+    // used to define global variable which are configured at compile time
+    // @see: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev')
+      }
+    }),
     // if you want to use interpolation for htmlWebpackPlugin options you have to use a template engine
     // @see: https://github.com/ampedandwired/html-webpack-plugin/blob/master/docs/template-option.md
     new HtmlWebpackPlugin({

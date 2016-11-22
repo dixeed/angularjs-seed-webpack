@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^2.24.1",
     "raw-loader": "^0.5.1",
     "webpack": "^1.13.3"
   },

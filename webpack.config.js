@@ -11,6 +11,10 @@ module.exports = {
     path: 'dist',
     filename: 'bundle.js'
   },
+  devServer: {
+    contentBase: 'dist',
+    inline: true
+  },
   module: {
     loaders: [
       { test: /\.html$/, include: [ path.resolve(__dirname, 'app') ], loader: 'raw' }

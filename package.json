@@ -4,7 +4,7 @@
   "description": "This is a blank startup project for AngularJS using the components approach and webpack for the build chain.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
+    "start": "webpack-dev-server",
     "fix": "webpack --display-error-details",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +26,8 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.24.1",
     "raw-loader": "^0.5.1",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "angular": "^1.5.8",

@@ -21,6 +21,7 @@ This section will contain some explanations about the different elements used in
 
 ### SASS
 You can find a brief introduction to SASS on the official [website](http://sass-lang.com/guide) in case you need a reminder of the features it offers.
+
 **TL;DR**:
 * If you want to use a mixin: `@include mixinName(parameters);`.
 

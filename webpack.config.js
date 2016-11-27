@@ -4,6 +4,8 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var appPath = path.resolve(__dirname, 'app');
+
 module.exports = {
   context: __dirname,
   entry: './app/app.js',
@@ -17,7 +19,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.html$/, include: [ path.resolve(__dirname, 'app') ], loader: 'raw' }
+      { test: /\.html$/, include: [ appPath ], loader: 'raw' },
+      { test: /\.(scss|sass)$/, include: [ appPath ], loader: 'style!css!sass' },
+      { test: /\.css$/, include: [ appPath ], loader: 'style!css' }
     ]
   },
   plugins: [

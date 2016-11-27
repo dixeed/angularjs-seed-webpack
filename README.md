@@ -8,16 +8,26 @@ Here the list of functionalities that are currently available in this project se
 - [ ] Generate sourcemap for development phase
 - [ ] Minification for production
 - [x] Dev server
-- [ ] CSS loading
-- [ ] SASS compiling
+- [x] CSS loading
+- [x] SASS compiling
 - [ ] ES2015 transpiling
-- [ ] ESlint linting
+- [ ] ESLint linting
 - [ ] Hot Module Replacement
 - [ ] Multi-module & lazy loading
 - [ ] Unit tests
 
 ## Explanation
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
+
+### SASS
+You can find a brief introduction to SASS on the official [website](http://sass-lang.com/guide) in case you need a reminder of the features it offers.
+**TL;DR**:
+* If you want to use a mixin: `@include mixinName(parameters);`.
+
+#### File structure
+[`_media-queries.scss`](app/commons/style/mixins/_media-queries.scss) regroups the media queries mixins used for responsive design. This is where the different breakpoint are defined in regards to the screen size and orientation.
+
+[`_vendors.scss`](app/commons/style/mixins/_vendors.scss) is used for the CSS3 vendor specific prefixes.
 
 ### Plugins
 #### webpack.DefinePlugin

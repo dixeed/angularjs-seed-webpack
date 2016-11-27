@@ -3,11 +3,12 @@
 
   var angular = require('angular');
   var uiRouter = require('angular-ui-router');
+  require('./commons/bootstrap.scss');
 
   var componentsModule = require('./components');
 
   angular.module('myApp', [
-    // have to use this syntax since we are not using ES6 
+    // have to use this syntax since we are not using ES6
     uiRouter.default,
     componentsModule
   ])

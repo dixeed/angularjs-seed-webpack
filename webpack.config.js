@@ -21,7 +21,8 @@ module.exports = {
     loaders: [
       { test: /\.html$/, include: [ appPath ], loader: 'raw' },
       { test: /\.(scss|sass)$/, include: [ appPath ], loader: 'style!css!sass' },
-      { test: /\.css$/, include: [ appPath ], loader: 'style!css' }
+      { test: /\.css$/, include: [ appPath ], loader: 'style!css' },
+      { test: /\.js$/, include: [ appPath ], loader: 'babel-loader' }
     ]
   },
   plugins: [

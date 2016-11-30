@@ -11,7 +11,7 @@ Here the list of functionalities that are currently available in this project se
 - [ ] JSON loading
 - [x] CSS loading
 - [x] SASS compiling
-- [ ] ES2015 transpiling
+- [x] ES2015 transpiling
 - [ ] ESLint linting
 - [ ] Hot Module Replacement
 - [ ] Multi-module & lazy loading
@@ -19,6 +19,9 @@ Here the list of functionalities that are currently available in this project se
 
 ## Explanation
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
+
+### ES2015+ support
+This project is using [BabelJS](https://babeljs.io/) to enable the use of next generation JS without waiting on browsers support. We are using the [`latest`](http://babeljs.io/docs/plugins/preset-latest/) preset which regroups ES2015, ES2016 and ES2017 enhancements so far.
 
 ### SASS
 You can find a brief introduction to SASS on the official [website](http://sass-lang.com/guide) in case you need a reminder of the features it offers.

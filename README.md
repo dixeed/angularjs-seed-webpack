@@ -30,6 +30,8 @@ You can find a brief introduction to SASS on the official [website](http://sass-
 
 [`_vendors.scss`](app/commons/style/mixins/_vendors.scss) is used for the CSS3 vendor specific prefixes.
 
+[`bootstrap.scss`](app/commons/style/bootstrap.scss) is the SASS entry file as it gathers all the different files together.
+
 ### Plugins
 #### webpack.DefinePlugin
 Used to define global variables that are configured at compile time. For example we define a [`process.env.NODE_ENV`](webpack.config.js) variable which we can use in our code to make special actions depending on the environment the code is running in. More info see [here](http://webpack.github.io/docs/list-of-plugins.html#defineplugin).

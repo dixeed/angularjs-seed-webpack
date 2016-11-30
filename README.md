@@ -8,6 +8,7 @@ Here the list of functionalities that are currently available in this project se
 - [ ] Generate sourcemap for development phase
 - [ ] Minification for production
 - [x] Dev server
+- [ ] JSON loading
 - [x] CSS loading
 - [x] SASS compiling
 - [ ] ES2015 transpiling

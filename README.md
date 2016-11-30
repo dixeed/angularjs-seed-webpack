@@ -30,7 +30,7 @@ You can find a brief introduction to SASS on the official [website](http://sass-
 
 [`_vendors.scss`](app/commons/style/mixins/_vendors.scss) is used for the CSS3 vendor specific prefixes.
 
-[`bootstrap.scss`](app/commons/style/bootstrap.scss) is the SASS entry file as it gathers all the different files together.
+[`bootstrap.scss`](app/commons/bootstrap.scss) is the SASS entry file as it gathers all the different files together.
 
 ### Plugins
 #### webpack.DefinePlugin

@@ -12,6 +12,7 @@ Here the list of functionalities that are currently available in this project se
 - [x] CSS loading
 - [x] SASS compiling
 - [x] ES2015 transpiling
+- [ ] NgInject to handle DI
 - [ ] ESLint linting
 - [ ] Hot Module Replacement
 - [ ] Multi-module & lazy loading

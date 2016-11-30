@@ -22,6 +22,7 @@ This section will contain some explanations about the different elements used in
 
 ### ES2015+ support
 This project is using [BabelJS](https://babeljs.io/) to enable the use of next generation JS without waiting on browsers support. We are using the [`latest`](http://babeljs.io/docs/plugins/preset-latest/) preset which regroups ES2015, ES2016 and ES2017 enhancements so far.
+If you need to catch up on ES2015, you can find a quick run-through [right here](https://babeljs.io/docs/learn-es2015/).
 
 ### SASS
 You can find a brief introduction to SASS on the official [website](http://sass-lang.com/guide) in case you need a reminder of the features it offers.

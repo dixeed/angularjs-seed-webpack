@@ -1,27 +1,21 @@
-(function() {
-  'use strict';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
 
-  var angular = require('angular');
-  var uiRouter = require('angular-ui-router');
-  require('./commons/bootstrap.scss');
+import './commons/bootstrap.scss';
+import Components from './components';
 
-  var componentsModule = require('./components');
+angular.module('myApp', [
+  uiRouter,
+  Components,
+])
+.config(appConfig);
 
-  angular.module('myApp', [
-    // have to use this syntax since we are not using ES6
-    uiRouter.default,
-    componentsModule
-  ])
-  .config(appConfig);
+appConfig.$inject = [ '$locationProvider', '$urlRouterProvider' ];
 
-  appConfig.$inject = [ '$locationProvider', '$urlRouterProvider' ];
+function appConfig($locationProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
 
-  function appConfig($locationProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
-
-    if (process.env.NODE_ENV === 'prod') {
-      $locationProvider.html5Mode(true);
-    }
+  if (process.env.NODE_ENV === 'prod') {
+    $locationProvider.html5Mode(true);
   }
-
-}());
+}

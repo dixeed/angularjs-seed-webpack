@@ -1,11 +1,5 @@
-(function() {
-  'use strict';
+import template from './root.html';
 
-  var angular = require('angular');
-
-  angular
-    .module('myApp.components')
-    .component('root', {
-      template: require('./root.html')
-    });
-}());
+export default {
+  template
+};

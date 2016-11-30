@@ -1,31 +1,10 @@
-(function() {
-  'use strict';
+import controller from './home.controller';
+import template from './home.html';
 
-  var angular = require('angular');
-
-  angular
-    .module('myApp.components.home')
-    .component('home', {
-      template: require('./home.html'),
-      bindings: {
-        title: '<'
-      },
-      controller: 'HomeCtrl'
-    })
-    .config(homeRouteProvider);
-
-  homeRouteProvider.$inject = [ '$stateProvider' ];
-
-  function homeRouteProvider($stateProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        component: 'home',
-        resolve: {
-          title: function() {
-            return 'I am the home title';
-          }
-        }
-      })
+export default {
+  template,
+  controller,
+  bindings: {
+    title: '<'
   }
-}());
+};

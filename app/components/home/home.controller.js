@@ -1,15 +1,7 @@
-(function() {
-  'use strict';
+HomeCtrl.$inject = [];
 
-  var angular = require('angular');
+export default HomeCtrl;
 
-  angular
-    .module('myApp.components.home')
-    .controller('HomeCtrl', HomeCtrl);
+function HomeCtrl() {
 
-  HomeCtrl.$inject = [];
-
-  function HomeCtrl() {
-    
-  }
-}());
+}

@@ -1,15 +1,13 @@
-(function() {
-  'use strict';
+import angular from 'angular';
 
-  var angular = require('angular');
+import Home from './home';
+import RootComponent from './root.component';
 
-  var componentModule = angular
-    .module('myApp.components', [
-      require('./home')
-    ])
-    .name;
+const Components = angular
+  .module('myApp.components', [
+    Home
+  ])
+  .component('root', RootComponent)
+  .name;
 
-  require('./root.component');
-
-  module.exports = componentModule;
-}());
+export default Components;

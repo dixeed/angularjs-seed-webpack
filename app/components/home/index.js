@@ -1,14 +1,27 @@
-(function() {
-  'use strict';
+import angular from 'angular';
 
-  var angular = require('angular');
+import HomeComponent from './home.component';
 
-  var homeModuleName = angular
-    .module('myApp.components.home', [])
-    .name;
+const Home = angular
+  .module('myApp.components.home', [])
+  .component('home', HomeComponent)
+  .config(homeRouteProvider)
+  .name;
 
-  require('./home.component');
-  require('./home.controller');
+homeRouteProvider.$inject = [ '$stateProvider' ];
 
-  module.exports = homeModuleName;
-}());
+function homeRouteProvider($stateProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      component: 'home',
+      resolve: {
+        title: function() {
+          return 'I am the home title';
+        }
+      }
+    });
+}
+
+
+export default Home;

@@ -8,14 +8,12 @@ angular.module('myApp', [
   uiRouter,
   Components,
 ])
-.config(appConfig);
-
-appConfig.$inject = [ '$locationProvider', '$urlRouterProvider' ];
-
-function appConfig($locationProvider, $urlRouterProvider) {
+.config(($locationProvider, $urlRouterProvider) => {
+  'ngInject';
+  
   $urlRouterProvider.otherwise('/');
 
   if (process.env.NODE_ENV === 'prod') {
     $locationProvider.html5Mode(true);
   }
-}
+});

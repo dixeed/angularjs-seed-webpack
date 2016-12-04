@@ -5,6 +5,6 @@ export default {
   template,
   controller,
   bindings: {
-    title: '<'
-  }
+    title: '<',
+  },
 };

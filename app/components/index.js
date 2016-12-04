@@ -5,7 +5,7 @@ import RootComponent from './root.component';
 
 const Components = angular
   .module('myApp.components', [
-    Home
+    Home,
   ])
   .component('root', RootComponent)
   .name;

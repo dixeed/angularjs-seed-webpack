@@ -10,7 +10,7 @@ angular.module('myApp', [
 ])
 .config(($locationProvider, $urlRouterProvider) => {
   'ngInject';
-  
+
   $urlRouterProvider.otherwise('/');
 
   if (process.env.NODE_ENV === 'prod') {

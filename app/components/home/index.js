@@ -5,23 +5,20 @@ import HomeComponent from './home.component';
 const Home = angular
   .module('myApp.components.home', [])
   .component('home', HomeComponent)
-  .config(homeRouteProvider)
+  .config(($stateProvider) => {
+    'ngInject';
+
+    $stateProvider
+      .state('home', {
+        url: '/',
+        component: 'home',
+        resolve: {
+          title() {
+            return 'I am the home title';
+          },
+        },
+      });
+  })
   .name;
-
-homeRouteProvider.$inject = [ '$stateProvider' ];
-
-function homeRouteProvider($stateProvider) {
-  $stateProvider
-    .state('home', {
-      url: '/',
-      component: 'home',
-      resolve: {
-        title: function() {
-          return 'I am the home title';
-        }
-      }
-    });
-}
-
 
 export default Home;

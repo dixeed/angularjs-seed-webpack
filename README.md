@@ -18,6 +18,15 @@ Here the list of functionalities that are currently available in this project se
 - [ ] Multi-module & lazy loading
 - [ ] Unit tests
 
+
+## Table of contents
+1. [Explanation](#explanation)
+  1. [ESLint](#eslint)
+  2. [ES2015+ support](#es2015-support)
+  3. [SASS](#sass)
+  4. [Plugins](#plugins)
+2. [Improvements](#improvements)
+
 ## Explanation
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
 

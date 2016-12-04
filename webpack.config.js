@@ -30,8 +30,10 @@ module.exports = {
     ],
   },
   plugins: [
-    // used to define global variable which are configured at compile time
-    // @see: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    /**
+     * used to define global variable which are configured at compile time
+     * @see: http://webpack.github.io/docs/list-of-plugins.html#defineplugin
+     */
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'dev'),

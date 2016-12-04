@@ -26,6 +26,7 @@ Here the list of functionalities that are currently available in this project se
   3. [SASS](#sass)
   4. [Plugins](#plugins)
 2. [Improvements](#improvements)
+3. [License](#license)
 
 ## Explanation
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
@@ -60,7 +61,7 @@ Used to define global variables that are configured at compile time. For example
 We use the [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) to generate the script/link tags into our [`app/index.html`](app/index.html) then writing the result into the `dist/` folder.
 
 ## Improvements
-1) Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.
+1. Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.
 
 ## License
 

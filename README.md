@@ -22,7 +22,9 @@ Here the list of functionalities that are currently available in this project se
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
 
 ### ESLint
-This project uses [ESLint](http://eslint.org/) to lint the code base. It uses [AirBnB's base](https://github.com/airbnb/javascript) linting configuration as its default configuration. You can find more explanation about the different applied rules in the previous link.
+This project uses [ESLint](http://eslint.org/) to lint the code base. It uses [AirBnB's base](https://github.com/airbnb/javascript) linting configuration as its default configuration. You can find more explanation about the different applied rules in the latter link.
+
+Failing to match the ESLint guidelines will result in errors thus stopping the build process.
 
 ### ES2015+ support
 This project is using [BabelJS](https://babeljs.io/) to enable the use of next generation JS without waiting on browsers support. We are using the [`latest`](http://babeljs.io/docs/plugins/preset-latest/) preset which regroups ES2015, ES2016 and ES2017 enhancements so far.

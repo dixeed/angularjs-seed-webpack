@@ -56,6 +56,7 @@ const common = {
 
 switch (TARGET) {
   case 'start':
+  case 'fix':
     module.exports = merge.smart(common, dev);
     break;
 

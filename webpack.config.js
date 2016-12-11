@@ -55,14 +55,10 @@ const common = {
 };
 
 switch (TARGET) {
-  case 'start':
-  case 'fix':
-    module.exports = merge.smart(common, dev);
-    break;
-
   case 'build':
     module.exports = merge.smart(common, prod);
     break;
 
   default:
+    module.exports = merge.smart(common, dev);
 }

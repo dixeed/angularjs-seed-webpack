@@ -20,14 +20,35 @@ Here the list of functionalities that are currently available in this project se
 
 
 ## Table of contents
-1. [Explanation](#explanation)
+1. [Usage](#usage)
+2. [Project structure](#project-structure)
+3. [Explanation](#explanation)
   1. [ESLint](#eslint)
   2. [ES2015+ support](#es2015-support)
   3. [SASS](#sass)
   4. [Sourcemap](#sourcemap)
   5. [Plugins](#plugins)
-2. [Improvements](#improvements)
-3. [License](#license)
+4. [Improvements](#improvements)
+5. [License](#license)
+
+## Usage
+Several scripts command are available in the `package.json`:
+* `npm start`: will start the devserver watching the files in the `app` folder, restarting the build process and updating the browser.
+* `npm run build`: to be used for production purpose.
+* `npm run fix`: if an error occurs during development and you cannot find the error. This one command will give the most detailed output possible.
+
+## Project structure
+```
+  - app/            # source folder of the application
+    |
+    -- commons/     # contains all application wide components and elements (SASS, ...)
+    -- components/  # main components folder
+    -- app.js       # application entry file
+    -- index.html   # root template
+  - config/         # contains global configuration files such as webpack config files.
+  - dist/           # output folder for the build process
+
+```
 
 ## Explanation
 This section will contain some explanations about the different elements used in the build process and the reasons behind these choices.
@@ -67,7 +88,7 @@ Used to define global variables that are configured at compile time. For example
 We use the [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) to generate the script/link tags into our [`app/index.html`](app/index.html) then writing the result into the `dist/` folder.
 
 #### webpack.optimize.UglifyJsPlugin
-[This plugin](http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) minifies the JS code for optimization purposes.
+[This plugin](http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) minifies the JS code for optimization purposes. It is currently used only for production.
 
 ## Improvements
 1. Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.

@@ -3,19 +3,19 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const dev = require('./config/webpack.dev.config');
+const prod = require('./config/webpack.prod.config');
 
+const TARGET = process.env.npm_lifecycle_event;
 const appPath = path.resolve(__dirname, 'app');
 
-module.exports = {
+const common = {
   context: __dirname,
   entry: './app/app.js',
   output: {
     path: 'dist',
     filename: 'bundle.js',
-  },
-  devServer: {
-    contentBase: 'dist',
-    inline: true,
   },
   module: {
     preLoaders: [
@@ -53,3 +53,15 @@ module.exports = {
     }),
   ],
 };
+
+switch (TARGET) {
+  case 'start':
+    module.exports = merge.smart(common, dev);
+    break;
+
+  case 'build':
+    module.exports = merge.smart(common, prod);
+    break;
+
+  default:
+}

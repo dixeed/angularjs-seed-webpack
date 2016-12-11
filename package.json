@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "fix": "webpack --display-error-details",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -40,7 +41,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^1.1.1"
   },
   "dependencies": {
     "angular": "^1.5.8",

@@ -54,6 +54,7 @@ Several scripts command are available in the `package.json`:
       |-- index.js                # main components entry file
       |-- root.component.js       # app main component
       |-- root.html               # root component template
+
     |-- app.js                    # application entry file
     |-- index.html                # root template
   - config/                       # contains global configuration files such as webpack config files.

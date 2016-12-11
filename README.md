@@ -5,7 +5,7 @@ This is a blank startup project for AngularJS 1.x using the components approach 
 ## Roadmap
 Here the list of functionalities that are currently available in this project seed:
 
-- [ ] Generate sourcemap for development phase
+- [x] Generate sourcemap for development phase
 - [x] Minification for production
 - [x] Dev server
 - [x] JSON loading
@@ -24,7 +24,8 @@ Here the list of functionalities that are currently available in this project se
   1. [ESLint](#eslint)
   2. [ES2015+ support](#es2015-support)
   3. [SASS](#sass)
-  4. [Plugins](#plugins)
+  4. [Sourcemap](#sourcemap)
+  5. [Plugins](#plugins)
 2. [Improvements](#improvements)
 3. [License](#license)
 
@@ -52,6 +53,11 @@ You can find a brief introduction to SASS on the official [website](http://sass-
 [`_vendors.scss`](app/commons/style/mixins/_vendors.scss) is used for the CSS3 vendor specific prefixes.
 
 [`bootstrap.scss`](app/commons/bootstrap.scss) is the SASS entry file as it gathers all the different files together.
+
+### Sourcemap
+This project is configured to generate source maps for development and production environment. They are generated as part of the JS bundles for dev but as separate files for production hence allowing to load them only when needed. There are currently only generated for JS file but it is possible to generate them for CSS files as well.
+
+For more information about the way you can customize the sourcemap generation process here is a [great resource](http://survivejs.com/webpack/developing-with-webpack/enabling-sourcemaps/#enabling-sourcemaps-during-development). Huge props to [@survivejs](https://twitter.com/survivejs) for his awesome contents.
 
 ### Plugins
 #### webpack.DefinePlugin

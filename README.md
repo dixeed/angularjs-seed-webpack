@@ -39,14 +39,25 @@ Several scripts command are available in the `package.json`:
 
 ## Project structure
 ```
-  - app/             # source folder of the application
+  - app/                          # source folder of the application
     |
-    |-- commons/     # contains all application wide components and elements (SASS, ...)
-    |-- components/  # main components folder
-    |-- app.js       # application entry file
-    |-- index.html   # root template
-  - config/          # contains global configuration files such as webpack config files.
-  - dist/            # output folder for the build process
+    |-- commons/                  # contains all application wide components and elements (SASS, ...)
+    |-- components/               # main components folder
+      |
+      |-- home/                   # example of a component folder
+        |
+        |-- index.js              # home module entry file
+        |-- home.component.js     # home component file
+        |-- home.controller.js    # home component controller file
+        |-- home.scss             # home component style file
+        |-- home.html             # home template file
+      |-- index.js                # main components entry file
+      |-- root.component.js       # app main component
+      |-- root.html               # root component template
+    |-- app.js                    # application entry file
+    |-- index.html                # root template
+  - config/                       # contains global configuration files such as webpack config files.
+  - dist/                         # output folder for the build process
 
 ```
 

@@ -6,7 +6,7 @@ This is a blank startup project for AngularJS 1.x using the components approach 
 Here the list of functionalities that are currently available in this project seed:
 
 - [ ] Generate sourcemap for development phase
-- [ ] Minification for production
+- [x] Minification for production
 - [x] Dev server
 - [x] JSON loading
 - [x] CSS loading
@@ -59,6 +59,9 @@ Used to define global variables that are configured at compile time. For example
 
 #### HtmlWebpackPlugin
 We use the [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) to generate the script/link tags into our [`app/index.html`](app/index.html) then writing the result into the `dist/` folder.
+
+#### webpack.optimize.UglifyJsPlugin
+[This plugin](http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) minifies the JS code for optimization purposes.
 
 ## Improvements
 1. Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.

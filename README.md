@@ -39,14 +39,14 @@ Several scripts command are available in the `package.json`:
 
 ## Project structure
 ```
-  - app/            # source folder of the application
+  - app/             # source folder of the application
     |
     |-- commons/     # contains all application wide components and elements (SASS, ...)
     |-- components/  # main components folder
     |-- app.js       # application entry file
     |-- index.html   # root template
-  - config/         # contains global configuration files such as webpack config files.
-  - dist/           # output folder for the build process
+  - config/          # contains global configuration files such as webpack config files.
+  - dist/            # output folder for the build process
 
 ```
 

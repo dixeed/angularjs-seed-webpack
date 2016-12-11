@@ -5,4 +5,5 @@ module.exports = {
     contentBase: 'dist',
     inline: true,
   },
+  devtool: 'eval-source-map',
 };

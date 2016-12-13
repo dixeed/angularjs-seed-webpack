@@ -104,7 +104,8 @@ We use the [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plu
 [This plugin](http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) minifies the JS code for optimization purposes. It is currently used only for production.
 
 ## Improvements
-1. Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.
+1. Add image loading to minimize assets loading if needed
+2. Look into [reasons](https://github.com/joshburgess/not-awesome-es6-classes) why not to use ES2015 `class` concept and adapt the codebase accordingly if agree.
 
 ## License
 

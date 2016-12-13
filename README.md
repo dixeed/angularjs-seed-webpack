@@ -36,6 +36,7 @@ Several scripts command are available in the `package.json`:
 * `npm start`: will start the devserver watching the files in the `app` folder, restarting the build process and updating the browser.
 * `npm run build`: to be used for production purpose.
 * `npm run fix`: if an error occurs during development and you cannot find the error. This one command will give the most detailed output possible.
+* `npm run reset`: will remove `.git` folder and init a new git repository.
 
 ## Project structure
 ```

@@ -15,7 +15,7 @@ const common = {
   entry: './app/app.js',
   output: {
     path: 'dist',
-    filename: 'bundle.js',
+    filename: 'app.bundle.js',
   },
   module: {
     preLoaders: [
@@ -50,6 +50,16 @@ const common = {
       template: './app/index.html',
       hash: true,
       inject: 'body',
+    }),
+
+    /**
+     * Inspired by NG6-starter
+     * @see https://github.com/AngularClass/NG6-starter/blob/master/webpack.config.js
+     */
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: '[name].bundle.js',
+      minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
     }),
   ],
 };

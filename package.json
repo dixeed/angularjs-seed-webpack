@@ -29,6 +29,7 @@
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-preset-latest": "^6.16.0",
+    "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb-base": "^11.1.0",

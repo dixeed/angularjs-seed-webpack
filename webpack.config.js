@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
 const appPath = path.resolve(__dirname, 'app');
@@ -75,6 +76,9 @@ module.exports = (env) => {
     *                  Plugins                       *
     *************************************************/
     plugins: removeEmpty([
+
+      ifProd(new CleanWebpackPlugin(['dist'], { root: __dirname, verbose: true })),
+
       /**
        * used to define global variable which are configured at compile time
        * @see: http://webpack.github.io/docs/list-of-plugins.html#defineplugin

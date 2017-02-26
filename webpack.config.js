@@ -43,7 +43,11 @@ module.exports = (env) => {
         { test: /\.js$/, enforce: 'pre', include: [appPath], use: 'eslint-loader' },
 
         { test: /\.html$/, include: [appPath], use: 'raw-loader' },
-        { test: /\.(scss|sass)$/, include: [appPath], use: ['style-loader', 'css-loader', 'sass-loader'] },
+        {
+          test: /\.(scss|sass)$/,
+          include: [appPath],
+          use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader'],
+        },
         { test: /\.css$/, include: [appPath], use: ['style-loader', 'css-loader'] },
         { test: /\.js$/, include: [appPath], use: ['ng-annotate-loader', 'babel-loader'] },
         { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'file-loader' },

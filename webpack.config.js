@@ -1,12 +1,12 @@
 'use strict';
 
-const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
-const appPath = path.resolve(__dirname, 'app');
+const appPath = resolve(__dirname, 'app');
 
 module.exports = (env) => {
   const { ifProd, ifNotProd } = getIfUtils(env);
@@ -24,7 +24,7 @@ module.exports = (env) => {
      *                  Output                       *
      ************************************************/
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: resolve(__dirname, 'dist'),
       filename: 'app.bundle.js',
     },
     /** **********************************************

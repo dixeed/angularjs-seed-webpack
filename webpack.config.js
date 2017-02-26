@@ -32,6 +32,7 @@ module.exports = (env) => {
     devServer: ifNotProd({
       contentBase: 'dist',
       inline: true,
+      open: true,
     }),
     devtool: ifProd('source-map', 'eval-source-map'),
     /** **********************************************

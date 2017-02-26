@@ -4,9 +4,9 @@
   "description": "This is a blank startup project for AngularJS using the components approach and webpack for the build chain.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --env.dev",
     "fix": "webpack --display-error-details",
-    "build": "webpack",
+    "build": "webpack --env.prod -p",
     "reset": "rm -rf .git && git init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,19 +31,18 @@
     "babel-preset-latest": "^6.16.0",
     "css-loader": "^0.26.0",
     "eslint": "^3.11.1",
-    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-config-airbnb-base": "^11.1.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
     "html-webpack-plugin": "^2.24.1",
-    "json-loader": "^0.5.4",
     "ng-annotate-loader": "^0.2.0",
-    "node-sass": "^3.13.0",
+    "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
-    "sass-loader": "^4.0.2",
+    "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "^1.1.1"
+    "webpack": "^2.2.1",
+    "webpack-config-utils": "^2.3.0",
+    "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
     "angular": "^1.5.8",

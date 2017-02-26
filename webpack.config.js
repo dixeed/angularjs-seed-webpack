@@ -57,6 +57,14 @@ module.exports = (env) => {
             },
           },
         },
+        {
+          test: /\.(jpg|png)$/,
+          include: [appPath],
+          use: {
+            loader: 'file-loader',
+            options: { name: './images/[hash].[ext]' },
+          },
+        },
       ],
     },
     /** **********************************************

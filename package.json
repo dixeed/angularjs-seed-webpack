@@ -6,9 +6,12 @@
   "scripts": {
     "start": "webpack-dev-server --env.dev",
     "fix": "webpack --display-error-details",
-    "build": "webpack --env.prod -p",
     "reset": "rm -rf .git && git init",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:prod",
+    "build:dev": "webpack --env.dev",
+    "build:prod": "webpack --env.prod -p",
+    "analyze:dev": "webpack --env.dev --env.analyze",
+    "analyze:prod": "webpack --env.prod --env.analyze -p"
   },
   "repository": {
     "type": "git",
@@ -45,6 +48,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.0",
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^2.4.1"
   },

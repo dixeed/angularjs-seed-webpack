@@ -4,12 +4,13 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
 const appPath = resolve(__dirname, 'app');
 
 module.exports = (env) => {
-  const { ifProd, ifNotProd } = getIfUtils(env);
+  const { ifProd, ifDev, ifAnalyze } = getIfUtils(env, ['prod', 'dev', 'analyze']);
 
   return removeEmpty({
     cache: ifProd(),
@@ -30,7 +31,7 @@ module.exports = (env) => {
     /** **********************************************
     *                  Devtool                       *
     *************************************************/
-    devServer: ifNotProd({
+    devServer: ifDev({
       contentBase: 'dist',
       inline: true,
       open: true,
@@ -119,6 +120,8 @@ module.exports = (env) => {
         minimize: true,
         debug: true,
       })),
+
+      ifAnalyze(new BundleAnalyzerPlugin({ analyzerMode: 'static' })),
     ]),
   });
 };

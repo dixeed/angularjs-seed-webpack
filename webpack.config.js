@@ -15,31 +15,32 @@ module.exports = (env) => {
   return removeEmpty({
     cache: ifProd(),
     context: appPath,
-    /** **********************************************
-    *                  Entry points                  *
-    *************************************************/
+
+    ////////////////////////////////////////////////
+    //                  Entry points              //
+    ////////////////////////////////////////////////
     entry: {
       app: './app.js',
     },
-    /** **********************************************
-     *                  Output                       *
-     ************************************************/
+    //////////////////////////////////////////////////
+    //                 Output                       //
+    //////////////////////////////////////////////////
     output: {
       path: resolve(__dirname, 'dist'),
       filename: 'app.bundle.js',
     },
-    /** **********************************************
-    *                  Devtool                       *
-    *************************************************/
+    ////////////////////////////////////////////////////
+    //                 Devtool                        //
+    ////////////////////////////////////////////////////
     devServer: ifDev({
       contentBase: 'dist',
       inline: true,
       open: true,
     }),
     devtool: ifProd('source-map', 'eval-source-map'),
-    /** **********************************************
-    *                  Loaders                       *
-    *************************************************/
+    //////////////////////////////////////////////////////
+    //                 Loaders                          //
+    //////////////////////////////////////////////////////
     module: {
       rules: [
         { test: /\.js$/, enforce: 'pre', include: [appPath], use: 'eslint-loader' },
@@ -73,9 +74,9 @@ module.exports = (env) => {
         },
       ],
     },
-    /** **********************************************
-    *                  Plugins                       *
-    *************************************************/
+    /////////////////////////////////////////////////////////////
+    //                       Plugins                           //
+    /////////////////////////////////////////////////////////////
     plugins: removeEmpty([
 
       ifProd(new CleanWebpackPlugin(['dist'], { root: __dirname, verbose: true })),
@@ -102,15 +103,15 @@ module.exports = (env) => {
         inject: 'body',
       }),
 
-      /**
-       * Inspired by NG6-starter
-       * @see https://github.com/AngularClass/NG6-starter/blob/master/webpack.config.js
-       */
+      //////////////////////////////////////////////////////////
+      //                     Chunks                           //
+      //////////////////////////////////////////////////////////
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         filename: '[name].bundle.js',
         minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
       }),
+
 
       ifProd(new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,

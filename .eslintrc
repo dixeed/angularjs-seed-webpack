@@ -6,6 +6,14 @@
   "rules": {
     "no-console": [ "warn", { "allow": ["error"] } ],
     "class-methods-use-this": "off",
-    "no-use-before-define": ["error", { "functions": false, "classes": true }]
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "spaced-comment": ["error", "always", {
+      "block": {
+        "exceptions": ["*"]
+      },
+      "line": {
+        "exceptions": ["/", "-"]
+      }
+    }]
   }
 }

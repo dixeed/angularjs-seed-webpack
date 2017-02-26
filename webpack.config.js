@@ -46,6 +46,17 @@ module.exports = (env) => {
         { test: /\.(scss|sass)$/, include: [appPath], use: ['style-loader', 'css-loader', 'sass-loader'] },
         { test: /\.css$/, include: [appPath], use: ['style-loader', 'css-loader'] },
         { test: /\.js$/, include: [appPath], use: ['ng-annotate-loader', 'babel-loader'] },
+        { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'file-loader' },
+        {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              mimetype: 'application/font-woff',
+            },
+          },
+        },
       ],
     },
     /** **********************************************

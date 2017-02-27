@@ -27,7 +27,7 @@ module.exports = (env) => {
     //////////////////////////////////////////////////
     output: {
       path: resolve(__dirname, 'dist'),
-      filename: 'app.bundle.js',
+      filename: '[name].[hash].js',
     },
     ////////////////////////////////////////////////////
     //                 Devtool                        //
@@ -108,10 +108,10 @@ module.exports = (env) => {
       //////////////////////////////////////////////////////////
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        filename: '[name].bundle.js',
         minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
       }),
 
+      new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),
 
       ifProd(new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,

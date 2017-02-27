@@ -14,6 +14,7 @@ angular.module('myApp', [
   'ngInject';
 
   $urlRouterProvider.otherwise('/');
+  console.log('toto');
 
   if (process.env.NODE_ENV === 'prod') {
     $locationProvider.html5Mode(true);

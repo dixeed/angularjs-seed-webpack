@@ -27,7 +27,7 @@ module.exports = (env) => {
     //////////////////////////////////////////////////
     output: {
       path: resolve(__dirname, 'dist'),
-      filename: '[name].[hash].js',
+      filename: ifProd('[name].[chunkhash].js', '[name].js'),
     },
     ////////////////////////////////////////////////////
     //                 Devtool                        //

@@ -108,15 +108,15 @@ module.exports = (env) => {
       //////////////////////////////////////////////////////////
       //                     DLL                              //
       //////////////////////////////////////////////////////////
-      // ifDev(new webpack.DllReferencePlugin({
-      //   context: '.',
-      //   manifest: resolve(buildPath, 'dll', 'manifest.json'),
-      // })),
-      //
-      // ifDev(new AddAssetHtmlPlugin({
-      //   filepath: resolve(buildPath, 'dll', 'vendors.js'),
-      //   includeSourcemap: false,
-      // })),
+      ifDev(new webpack.DllReferencePlugin({
+        context: '.',
+        manifest: resolve(buildPath, 'dll', 'manifest.json'),
+      })),
+
+      ifDev(new AddAssetHtmlPlugin({
+        filepath: resolve(buildPath, 'dll', 'vendors.js'),
+        includeSourcemap: false,
+      })),
 
 
       //////////////////////////////////////////////////////////

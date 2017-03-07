@@ -8,8 +8,9 @@
     "fix": "webpack --display-error-details",
     "reset": "rm -rf .git && git init",
     "build": "npm run build:prod",
-    "build:dev": "webpack --env.dev",
+    "build:dev": "npm run build:dll && webpack --env.dev",
     "build:prod": "webpack --env.prod -p",
+    "build:dll": "webpack --config webpack.config.dll.js",
     "analyze:dev": "webpack --env.dev --env.analyze",
     "analyze:prod": "webpack --env.prod --env.analyze -p"
   },
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme",
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^1.0.2",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-preset-latest": "^6.16.0",

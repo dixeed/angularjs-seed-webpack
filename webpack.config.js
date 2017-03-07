@@ -3,11 +3,13 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
 const appPath = resolve(__dirname, 'app');
+const buildPath = resolve(__dirname, 'dist');
 
 module.exports = (env) => {
   const { ifProd, ifDev, ifAnalyze } = getIfUtils(env, ['prod', 'dev', 'analyze']);
@@ -26,7 +28,7 @@ module.exports = (env) => {
     //                 Output                       //
     //////////////////////////////////////////////////
     output: {
-      path: resolve(__dirname, 'dist'),
+      path: buildPath,
       filename: ifProd('[name].[chunkhash].js', '[name].js'),
     },
     ////////////////////////////////////////////////////
@@ -104,14 +106,28 @@ module.exports = (env) => {
       }),
 
       //////////////////////////////////////////////////////////
+      //                     DLL                              //
+      //////////////////////////////////////////////////////////
+      // ifDev(new webpack.DllReferencePlugin({
+      //   context: '.',
+      //   manifest: resolve(buildPath, 'dll', 'manifest.json'),
+      // })),
+      //
+      // ifDev(new AddAssetHtmlPlugin({
+      //   filepath: resolve(buildPath, 'dll', 'vendors.js'),
+      //   includeSourcemap: false,
+      // })),
+
+
+      //////////////////////////////////////////////////////////
       //                     Chunks                           //
       //////////////////////////////////////////////////////////
-      new webpack.optimize.CommonsChunkPlugin({
+      ifProd(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
-      }),
+      })),
 
-      new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),
+      ifProd(new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' })),
 
       ifProd(new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,

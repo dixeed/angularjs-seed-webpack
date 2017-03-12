@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
@@ -20,6 +21,12 @@ module.exports = (env) => {
     console.log(chalk.red('Generate DLL (npm run build:dll)'));
     process.exit(1);
   }
+
+  const SASSLoaders = [
+    { loader: 'css-loader', options: { sourceMap: true } },
+    'resolve-url-loader',
+    { loader: 'sass-loader', options: { sourceMap: true } },
+  ];
 
   return removeEmpty({
     cache: ifProd(),
@@ -58,14 +65,19 @@ module.exports = (env) => {
         {
           test: /\.(scss|sass)$/,
           include: [appPath],
-          use: [
-            'style-loader',
-            { loader: 'css-loader', options: { sourceMap: true } },
-            'resolve-url-loader',
-            { loader: 'sass-loader', options: { sourceMap: true } },
-          ],
+          use: ifProd(
+            ExtractTextPlugin.extract({ fallback: 'style-loader', use: SASSLoaders }),
+            ['style-loader', ...SASSLoaders]
+          ),
         },
-        { test: /\.css$/, include: [appPath], use: ['style-loader', 'css-loader'] },
+        {
+          test: /\.css$/,
+          include: [appPath],
+          use: ifProd(
+            ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+            ['style-loader', 'css-loader']
+          ),
+        },
         {
           test: /\.js$/,
           include: [appPath],
@@ -123,6 +135,8 @@ module.exports = (env) => {
         hash: true,
         inject: 'body',
       }),
+
+      ifProd(new ExtractTextPlugin('style_[contenthash].css')),
 
       //////////////////////////////////////////////////////////
       //                     DLL                              //

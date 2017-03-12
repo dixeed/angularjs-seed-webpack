@@ -1,6 +1,8 @@
 'use strict';
 
 const { resolve } = require('path');
+const { existsSync } = require('fs');
+const chalk = require('chalk');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
@@ -13,6 +15,11 @@ const buildPath = resolve(__dirname, 'dist');
 
 module.exports = (env) => {
   const { ifProd, ifDev, ifAnalyze } = getIfUtils(env, ['prod', 'dev', 'analyze']);
+
+  if (ifDev() && !existsSync(resolve(buildPath, 'dll'))) {
+    console.log(chalk.red('Generate DLL (npm run build:dll)'));
+    process.exit(1);
+  }
 
   return removeEmpty({
     cache: ifProd(),

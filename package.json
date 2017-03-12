@@ -32,12 +32,12 @@
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^1.0.2",
     "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.8",
+    "babel-loader": "^6.4.0",
     "babel-preset-latest": "^6.16.0",
     "clean-webpack-plugin": "^0.1.15",
-    "css-loader": "^0.26.0",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb-base": "^11.1.0",
+    "css-loader": "^0.26.4",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb-base": "^11.1.1",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
     "file-loader": "^0.10.1",
@@ -45,17 +45,17 @@
     "ng-annotate-loader": "^0.2.0",
     "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
-    "resolve-url-loader": "^2.0.0",
-    "sass-loader": "^6.0.2",
+    "resolve-url-loader": "^2.0.2",
+    "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
-    "webpack-bundle-analyzer": "^2.3.0",
+    "webpack-bundle-analyzer": "^2.3.1",
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.6.3",
     "angular-ui-router": "^1.0.0-beta.3",
     "oclazyload": "^1.0.9"
   }

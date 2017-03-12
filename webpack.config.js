@@ -52,6 +52,7 @@ module.exports = (env) => {
       contentBase: buildPath,
       inline: true,
       open: true,
+      hot: true,
     }),
     devtool: ifProd('source-map', 'eval-source-map'),
     //////////////////////////////////////////////////////
@@ -82,6 +83,7 @@ module.exports = (env) => {
           test: /\.js$/,
           include: [appPath],
           use: [
+            { loader: 'angular-hot-loader', options: { log: true } },
             'ng-annotate-loader',
             { loader: 'babel-loader', options: { cacheDirectory: true } },
           ],
@@ -137,6 +139,10 @@ module.exports = (env) => {
       }),
 
       ifProd(new ExtractTextPlugin('style_[contenthash].css')),
+
+      ifDev(new webpack.HotModuleReplacementPlugin()),
+
+      ifDev(new webpack.NamedModulesPlugin()),
 
       //////////////////////////////////////////////////////////
       //                     DLL                              //

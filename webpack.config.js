@@ -51,7 +51,12 @@ module.exports = (env) => {
         {
           test: /\.(scss|sass)$/,
           include: [appPath],
-          use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader'],
+          use: [
+            'style-loader',
+            { loader: 'css-loader', options: { sourceMap: true } },
+            'resolve-url-loader',
+            { loader: 'sass-loader', options: { sourceMap: true } },
+          ],
         },
         { test: /\.css$/, include: [appPath], use: ['style-loader', 'css-loader'] },
         {

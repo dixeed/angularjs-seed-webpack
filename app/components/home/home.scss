@@ -1,9 +1,9 @@
 h1 {
   text-decoration: underline;
-}
 
-h1:after {
-  content: ' ! ';
-  display: inline-block;
-  color: $secondary-color;
+  &:after {
+    content: ' ! ';
+    display: inline-block;
+    color: $secondary-color;
+  }
 }

@@ -7,4 +7,8 @@ export default class HomeComponent {
     this.content = data.content;
     this.subTitle = data.title;
   }
+
+  $onInit() {
+    this.input = '';
+  }
 }

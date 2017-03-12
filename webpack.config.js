@@ -35,7 +35,7 @@ module.exports = (env) => {
     //                 Devtool                        //
     ////////////////////////////////////////////////////
     devServer: ifDev({
-      contentBase: 'dist',
+      contentBase: buildPath,
       inline: true,
       open: true,
     }),

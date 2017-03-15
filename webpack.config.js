@@ -83,7 +83,6 @@ module.exports = (env) => {
           test: /\.js$/,
           include: [appPath],
           use: [
-            { loader: 'angular-hot-loader', options: { log: true } },
             'ng-annotate-loader',
             { loader: 'babel-loader', options: { cacheDirectory: true } },
           ],

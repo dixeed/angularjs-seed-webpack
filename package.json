@@ -31,6 +31,7 @@
   "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme",
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^1.0.2",
+    "angular-hot-loader": "^0.8.6",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.4.0",
     "babel-preset-latest": "^6.16.0",

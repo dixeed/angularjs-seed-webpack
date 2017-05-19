@@ -6,4 +6,4 @@
 
 require('angular');
 require('oclazyload');
-require('angular-ui-router');
+require('@uirouter/angularjs');

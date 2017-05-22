@@ -9,7 +9,7 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    vendors: [resolve('config', 'vendors.js')],
+    vendors: [resolve('config', 'dll', 'vendors.js')],
   },
 
   output: {

@@ -1,0 +1,96 @@
+'use strict';
+
+// Makes the script crash on unhandled rejections instead of silently
+// ignoring them. In the future, promise rejections that are not handled will
+// terminate the Node.js process with a non-zero exit code.
+// taken from: https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts/scripts#L19
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
+
+const chalk = require('chalk');
+const path = require('path');
+const fse = require('fs-extra');
+const Promise = require('bluebird');
+const { spawn } = require('child_process');
+
+const packageJSON = require('../package.json');
+const destPath = path.resolve(__dirname, 'dll');
+const vendorsLibPath = path.resolve(destPath, 'vendors.js');
+const prevDepPath = path.resolve(destPath, 'previous-dependencies.txt');
+
+if (packageJSON.dependencies === undefined) {
+  noDependencies();
+}
+
+const dependencies = Object.keys(packageJSON.dependencies);
+
+if (dependencies.length === 0) {
+  noDependencies();
+}
+
+fse.ensureFile(prevDepPath)
+  .then(() => fse.readFile(prevDepPath, 'utf8'))
+  .then((prevDep) => {
+    const currentDep = JSON.stringify(dependencies);
+
+    if (currentDep === prevDep) {
+      console.log(chalk.yellow('Dependencies have not changed'));
+      console.log(`DLL build: [${chalk.yellow('ABORT')}]`);
+      process.exit(0);
+    }
+
+    return fse.outputFile(prevDepPath, currentDep);
+  })
+  .then(() => {
+    console.log(`Updated previous dependencies file: [${chalk.green('OK')}]`);
+    return fse.ensureFile(vendorsLibPath);
+  })
+  .then(() => fse.readFile(vendorsLibPath, 'utf8'))
+  .then((vendorsContent) => {
+    let textBeforeLabel = '';
+    if (vendorsContent) {
+      const posLabel = vendorsContent.indexOf('// LIST DEP START -- DO NOT DELETE');
+      textBeforeLabel = vendorsContent.substring(0, posLabel);
+    } else {
+      textBeforeLabel = `/**
+ * This file lists all the external dependencies that are used in the project
+ * to create a dll file for these vendors dependencies. ==> fast build !
+ */
+'use strict';
+
+// LIST DEP START -- DO NOT DELETE`;
+    }
+
+    const content = dependencies.reduce((list, dep) => `${list}\nrequire('${dep}');`, `${textBeforeLabel}`);
+    return fse.outputFile(vendorsLibPath, content);
+  })
+  .then(() => {
+    console.log(`Vendors script updated: [${chalk.green('OK')}]`);
+    console.log(chalk.green('\nStarting webpack DLL build ...'));
+
+    const buildDll = spawn('npm', ['run', 'build:dll']);
+    return new Promise((resolve, reject) => {
+      buildDll.stdout.on('data', (data) => console.log(data.toString('utf8')));
+      buildDll.stderr.on('data', (data) => console.log(data.toString('utf8')));
+      buildDll.on('exit', (code) => {
+        if (code !== 0) {
+          reject(new Error(`DLL built: [${chalk.red('ERROR')}]`));
+        } else {
+          resolve();
+        }
+      });
+      buildDll.on('error', reject);
+    });
+  })
+  .then(() => console.log(`DLL built: [${chalk.green('OK')}]`))
+  .catch((err) => {
+    throw err;
+  });
+
+
+function noDependencies() {
+  console.log(chalk.yellow('No dependencies in package.json'));
+  console.log(`DLL build: [${chalk.yellow('ABORT')}]`);
+  process.exit(0);
+}

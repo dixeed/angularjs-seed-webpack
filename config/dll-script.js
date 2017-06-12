@@ -85,7 +85,8 @@ fse.ensureFile(prevDepPath)
   })
   .then(() => console.log(`DLL built: [${chalk.green('OK')}]`))
   .catch((err) => {
-    throw err;
+    console.error(err);
+    process.exit(1);
   });
 
 

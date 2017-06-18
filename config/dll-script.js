@@ -16,9 +16,11 @@ const { spawn } = require('child_process');
 
 const GLOBAL_ERR_STATUS = 1;
 const BAD_CONF_STATUS = 2;
+const MISSING_DEP_STATUS = 3;
 const packageJSON = require('../package.json');
 const ignoredDep = packageJSON.dllIgnore;
 const destPath = path.resolve(__dirname, 'dll');
+const nodeModules = path.resolve(__dirname, '..', 'node_modules');
 const vendorsLibPath = path.resolve(destPath, 'vendors.js');
 const prevDepPath = path.resolve(destPath, 'previous-dependencies.txt');
 
@@ -39,7 +41,24 @@ if (dependencies.length === 0) {
   noDependencies();
 }
 
-fse.ensureFile(prevDepPath)
+const ensureDepsPromise = dependencies
+  .map((dep) => {
+    const depPath = path.resolve(nodeModules, dep);
+    return fse.pathExists(depPath);
+  });
+
+Promise.all(ensureDepsPromise)
+  .then((areDepPresent) => {
+    const isNotPresent = areDepPresent.some(isPresent => !isPresent);
+    if (isNotPresent === true) {
+      console.warn(chalk.yellow(`
+        Some dependencies are not installed.\n
+        Please run npm install.`)
+      );
+      process.exit(MISSING_DEP_STATUS);
+    }
+  })
+  .then(() => fse.ensureFile(prevDepPath))
   .then(() => fse.readFile(prevDepPath, 'utf8'))
   .then((prevDep) => {
     const currentDep = JSON.stringify(dependencies);

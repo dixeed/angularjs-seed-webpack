@@ -30,6 +30,7 @@
     "url": "https://github.com/dixeed/angularjs-seed-webpack/issues"
   },
   "homepage": "https://github.com/dixeed/angularjs-seed-webpack#readme",
+  "dllIgnore": [],
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.0.1",
     "babel-core": "^6.24.1",

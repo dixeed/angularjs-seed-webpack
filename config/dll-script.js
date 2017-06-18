@@ -14,16 +14,26 @@ const fse = require('fs-extra');
 const Promise = require('bluebird');
 const { spawn } = require('child_process');
 
+const GLOBAL_ERR_STATUS = 1;
+const BAD_CONF_STATUS = 2;
 const packageJSON = require('../package.json');
+const ignoredDep = packageJSON.dllIgnore;
 const destPath = path.resolve(__dirname, 'dll');
 const vendorsLibPath = path.resolve(destPath, 'vendors.js');
 const prevDepPath = path.resolve(destPath, 'previous-dependencies.txt');
+
+if (ignoredDep !== undefined && !Array.isArray(ignoredDep)) {
+  console.log(`dllIgnore should be an Array : [${chalk.red('ERROR')}]`);
+  process.exit(BAD_CONF_STATUS);
+}
 
 if (packageJSON.dependencies === undefined) {
   noDependencies();
 }
 
-const dependencies = Object.keys(packageJSON.dependencies);
+const dependencies = Object
+  .keys(packageJSON.dependencies)
+  .filter(dep => !(ignoredDep !== undefined && ignoredDep.includes(dep)));
 
 if (dependencies.length === 0) {
   noDependencies();
@@ -86,7 +96,7 @@ fse.ensureFile(prevDepPath)
   .then(() => console.log(`DLL built: [${chalk.green('OK')}]`))
   .catch((err) => {
     console.error(err);
-    process.exit(1);
+    process.exit(GLOBAL_ERR_STATUS);
   });
 
 

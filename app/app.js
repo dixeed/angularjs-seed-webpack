@@ -3,6 +3,7 @@ import uiRouter from '@uirouter/angularjs';
 import oclazyload from 'oclazyload';
 import uiNotification from 'angular-ui-notification';
 import ngResource from 'angular-resource';
+import ngAnimate from 'angular-animate';
 
 import './commons/bootstrap.scss';
 import Components from 'components';
@@ -13,6 +14,7 @@ angular.module('myApp', [
   oclazyload,
   uiNotification,
   ngResource,
+  ngAnimate,
   Services,
   Components,
 ])

@@ -4,6 +4,7 @@ import oclazyload from 'oclazyload';
 import uiNotification from 'angular-ui-notification';
 import ngResource from 'angular-resource';
 import ngAnimate from 'angular-animate';
+import ngSanitize from 'angular-sanitize';
 
 import './commons/bootstrap.scss';
 import Components from 'components';
@@ -15,6 +16,7 @@ angular.module('myApp', [
   uiNotification,
   ngResource,
   ngAnimate,
+  ngSanitize,
   Services,
   Components,
 ])

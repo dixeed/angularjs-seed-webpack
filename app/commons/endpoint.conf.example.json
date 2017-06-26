@@ -1,0 +1,4 @@
+{
+  "backend_url": "http://localhost:8891",
+  "frontend_url": "http://localhost:8080/#!"
+}

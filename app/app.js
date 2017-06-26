@@ -5,14 +5,15 @@ import uiNotification from 'angular-ui-notification';
 import ngResource from 'angular-resource';
 
 import './commons/bootstrap.scss';
-import Components from './components';
+import Components from 'components';
+import Services from 'commons/services';
 
 angular.module('myApp', [
   uiRouter,
-  Components,
   oclazyload,
   uiNotification,
   ngResource,
+  Services,
   Components,
 ])
 .config(($locationProvider, $urlRouterProvider) => {

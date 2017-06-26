@@ -79,7 +79,6 @@ module.exports = (env) => {
         },
         {
           test: /\.css$/,
-          include: [appPath],
           use: ifProd(
             ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
             ['style-loader', 'css-loader']

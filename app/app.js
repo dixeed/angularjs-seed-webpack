@@ -2,6 +2,7 @@ import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
 import oclazyload from 'oclazyload';
 import uiNotification from 'angular-ui-notification';
+import ngResource from 'angular-resource';
 
 import './commons/bootstrap.scss';
 import Components from './components';
@@ -11,6 +12,8 @@ angular.module('myApp', [
   Components,
   oclazyload,
   uiNotification,
+  ngResource,
+  Components,
 ])
 .config(($locationProvider, $urlRouterProvider) => {
   'ngInject';

@@ -27,13 +27,19 @@ export default class EndpointService {
     const properties = Object.keys(extraActions);
 
     // Merges the default actions with the provided.
-    angular.forEach(properties, (prop) => { actions[prop] = extraActions[prop]; });
+    angular.forEach(properties, prop => {
+      actions[prop] = extraActions[prop];
+    });
 
     return this.$resource(url, null, actions);
   }
 
   getUrl(endpoint) {
-    if (angular.isUndefined(endpoint) || endpoint === null || (endpoint !== '' && (endpoint.startsWith('http://') || endpoint.startsWith('https://')))) {
+    if (
+      angular.isUndefined(endpoint) ||
+      endpoint === null ||
+      (endpoint !== '' && (endpoint.startsWith('http://') || endpoint.startsWith('https://')))
+    ) {
       return endpoint;
     }
 

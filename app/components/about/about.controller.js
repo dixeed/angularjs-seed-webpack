@@ -1,5 +1,5 @@
 export default class AboutCtrl {
   constructor() {
-    this.title = 'I\'m the About page';
+    this.title = "I'm the About page";
   }
 }

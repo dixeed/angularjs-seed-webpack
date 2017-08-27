@@ -4,6 +4,7 @@ const { resolve } = require('path');
 const { existsSync } = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -14,7 +15,7 @@ const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 const appPath = resolve(__dirname, 'app');
 const buildPath = resolve(__dirname, 'dist');
 
-module.exports = (env) => {
+module.exports = env => {
   const { ifProd, ifDev, ifAnalyze } = getIfUtils(env, ['prod', 'dev', 'analyze']);
 
   if (ifDev() && !existsSync(resolve(buildPath, 'dll'))) {
@@ -22,11 +23,20 @@ module.exports = (env) => {
     process.exit(1);
   }
 
-  const SASSLoaders = [
-    { loader: 'css-loader', options: { sourceMap: true } },
+  const CSSLoaders = (nbLoaders = 1) => [
+    { loader: 'css-loader', options: { sourceMap: true, importLoaders: nbLoaders } },
     'resolve-url-loader',
-    { loader: 'sass-loader', options: { sourceMap: true } },
+    {
+      loader: 'postcss-loader',
+      options: {
+        ident: 'postcss',
+        plugins: () => [autoprefixer({ flexbox: 'no-2009' })],
+        sourceMap: true,
+      },
+    },
   ];
+
+  const SASSLoaders = [...CSSLoaders(2), { loader: 'sass-loader', options: { sourceMap: true } }];
 
   return removeEmpty({
     cache: ifProd(),
@@ -72,16 +82,19 @@ module.exports = (env) => {
         {
           test: /\.(scss|sass)$/,
           include: [appPath],
-          use: ifProd(
-            ExtractTextPlugin.extract({ fallback: 'style-loader', use: SASSLoaders }),
-            ['style-loader', ...SASSLoaders]
-          ),
+          use: ifProd(ExtractTextPlugin.extract({ fallback: 'style-loader', use: SASSLoaders }), [
+            'style-loader',
+            ...SASSLoaders,
+          ]),
         },
         {
           test: /\.css$/,
           use: ifProd(
-            ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
-            ['style-loader', 'css-loader']
+            ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: CSSLoaders(),
+            }),
+            ['style-loader', ...CSSLoaders()]
           ),
         },
         {
@@ -117,7 +130,6 @@ module.exports = (env) => {
     //                       Plugins                           //
     /////////////////////////////////////////////////////////////
     plugins: removeEmpty([
-
       ifProd(new CleanWebpackPlugin(['dist'], { root: __dirname, verbose: true })),
 
       /**
@@ -151,35 +163,44 @@ module.exports = (env) => {
       //////////////////////////////////////////////////////////
       //                     DLL                              //
       //////////////////////////////////////////////////////////
-      ifDev(new webpack.DllReferencePlugin({
-        context: '.',
-        manifest: resolve(buildPath, 'dll', 'manifest.json'),
-      })),
+      ifDev(
+        new webpack.DllReferencePlugin({
+          context: '.',
+          manifest: resolve(buildPath, 'dll', 'manifest.json'),
+        })
+      ),
 
-      ifDev(new AddAssetHtmlPlugin({
-        filepath: resolve(buildPath, 'dll', 'vendors.js'),
-        includeSourcemap: false,
-      })),
-
+      ifDev(
+        new AddAssetHtmlPlugin({
+          filepath: resolve(buildPath, 'dll', 'vendors.js'),
+          includeSourcemap: false,
+        })
+      ),
 
       //////////////////////////////////////////////////////////
       //                     Chunks                           //
       //////////////////////////////////////////////////////////
-      ifProd(new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
-      })),
+      ifProd(
+        new webpack.optimize.CommonsChunkPlugin({
+          name: 'vendor',
+          minChunks: module => module.resource && module.resource.indexOf(appPath) === -1,
+        })
+      ),
 
       ifProd(new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' })),
 
-      ifProd(new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-      })),
+      ifProd(
+        new webpack.optimize.UglifyJsPlugin({
+          sourceMap: true,
+        })
+      ),
 
-      ifProd(new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: true,
-      })),
+      ifProd(
+        new webpack.LoaderOptionsPlugin({
+          minimize: true,
+          debug: true,
+        })
+      ),
 
       ifAnalyze(new BundleAnalyzerPlugin({ analyzerMode: 'static' })),
     ]),

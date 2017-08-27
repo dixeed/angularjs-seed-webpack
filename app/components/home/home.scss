@@ -1,3 +1,11 @@
+.home {
+  &__image {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#e98a00, #f5aa2f);
+  }
+}
+
 h1 {
   text-decoration: underline;
 

@@ -1,6 +1,8 @@
-# AngularJS Seed project (webpack version)
+# AngularJS Seed project (webpack version) - **DEPRECATED**
 
 This is a blank startup project for AngularJS 1.x using the components approach and webpack for the build chain.
+
+**The project is deprecated and will not be updated any further. It is kept for the issue tracker. The successor of this project is: https://github.com/dixeed/angularjs-scripts.**
 
 ## Roadmap
 Here the list of functionalities that are currently available in this project seed:
